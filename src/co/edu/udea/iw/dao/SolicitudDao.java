@@ -5,48 +5,57 @@ import co.edu.udea.iw.dto.Solicitud;
 import co.edu.udea.iw.exception.ExceptionDao;
 
 /**
- * DAO
- * Interfaz que define los metodos que va a proveer
- * la clase Solicitud.
+ * DAO Interfaz que define los metodos que va a proveer la clase Solicitud.
  * 
  * @author Diana Ciro
  * @author Milena Cardenas
- * @author Jorge Bojaca 
+ * @author Jorge Bojaca
  * @version 1.0
  */
 public interface SolicitudDao {
-	
+
 	/**
-	* Registrar un nuevo solicitud en la tabla Solicitud.
-	* 
-	* @param solicitud registro de usuario que se guardará en la tabla de Solicitud.
-	* @throws ExceptionDao cuando ocurre cualquier error en la comunicación con la BD.
-	*/
+	 * Registrar una nueva solicitud en la tabla Solicitud.
+	 * 
+	 * @param solicitud
+	 *            registro de la solicitud hecha por el usuario que se guardará
+	 *            en la tabla de Solicitud.
+	 * @throws ExceptionDao
+	 *             cuando ocurre cualquier error en la comunicación con la BD.
+	 */
 	public void guardar(Solicitud solicitud) throws ExceptionDao;
 
 	/**
-	 * Actualiza la informacion del usuario en la tabla Solicitud.
+	 * Actualizar la informacion de la solicitud en la tabla Solicitud.
 	 * 
-	 * @param Solicitud registro que contiene la informacion del Solicitud que se va a actualizar.
+	 * @param solicitud
+	 *            registro que contiene la informacion de la Solicitud que se va
+	 *            a actualizar.
 	 * @return Solicitud actualizado.
-	 * @throws ExceptionDao cuando ocurre cualquier error en la comunicación con la BD.
+	 * @throws ExceptionDao
+	 *             cuando ocurre cualquier error en la comunicación con la BD.
 	 */
 	public Solicitud actualizar(Solicitud solicitud) throws ExceptionDao;
 
 	/**
-	 * Obtiene la lista de solicitudes almacenados en la tabla Solicitud de la base de datos.
+	 * Obtener la lista de solicitudes almacenados en la tabla Solicitud de la
+	 * base de datos.
 	 * 
 	 * @return lista de solicitudes.
-	 * @throws ExceptionDao cuando ocurre cualquier error en la comunicación con la BD.
+	 * @throws ExceptionDao
+	 *             cuando ocurre cualquier error en la comunicación con la BD.
 	 */
 	public List<Solicitud> obtenerSolicitud() throws ExceptionDao;
 
 	/**
-	 * Obtiene la Solicitud que corresponda al id ingresada como parámetro.
+	 * Obtener la Solicitud que corresponda al identificador ingresado como
+	 * parámetro.
 	 * 
-	 * @param id identificacion de la solicitud.
+	 * @param id
+	 *            identifidor de la solicitud.
 	 * @return Solicitud con toda su información.
-	 * @throws ExceptionDao cuando ocurre cualquier error en la comunicación con la BD.
+	 * @throws ExceptionDao
+	 *             cuando ocurre cualquier error en la comunicación con la BD.
 	 */
 	public Solicitud obtenerSolicitud(int id) throws ExceptionDao;
 

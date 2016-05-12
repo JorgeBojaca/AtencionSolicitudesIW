@@ -1,8 +1,7 @@
 package co.edu.udea.iw.exception;
 
 /**
- * Clase para manejar las excepciones de 
- * la logica de negocio de al aplicacion.
+ * Clase para manejar las excepciones de la logica de negocio de al aplicacion.
  * 
  * @author Elver Suarez Alzate
  */
@@ -12,7 +11,6 @@ public class IWServiceException extends Exception {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public IWServiceException(String arg0, Throwable arg1) {
 		super(arg0, arg1);

@@ -2,44 +2,43 @@ package co.edu.udea.iw.dao.hibernate;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import co.edu.udea.iw.dao.SolicitudDao;
 import co.edu.udea.iw.dto.Solicitud;
 import co.edu.udea.iw.exception.ExceptionDao;
 
 /**
- * Implementación de la interfaz SolicitudDao, 
- * esta se basara en Hibernate,
+ * Implementación de la interfaz SolicitudDao, esta se basara en Hibernate. En
+ * esta clase se hereda de HibernateDaoSupport para adquirir la funcionalidad de
+ * Hibernate.
  * 
  * @author Diana Ciro
  * @author Milena Cardenas
  * @author Jorge Bojaca
  * @version 1.0
  */
-public class SolicitudDaoHibernate extends HibernateDaoSupport implements SolicitudDao{
+public class SolicitudDaoHibernate extends HibernateDaoSupport implements SolicitudDao {
 
 	@Override
 	public void guardar(Solicitud solicitud) throws ExceptionDao {
 		Session session = null;
-		
+
 		try {
 			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
-			session.save(solicitud);			
+			session.save(solicitud);
 		} catch (HibernateException e) {
 			throw new ExceptionDao(e);
 		}
-		
+
 	}
 
 	@Override
 	public Solicitud actualizar(Solicitud solicitud) throws ExceptionDao {
-			Session session = null;
-		
+		Session session = null;
+
 		try {
 			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 			session.update(solicitud);
@@ -53,7 +52,7 @@ public class SolicitudDaoHibernate extends HibernateDaoSupport implements Solici
 	public List<Solicitud> obtenerSolicitud() throws ExceptionDao {
 		List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 		Session session = null;
-		
+
 		try {
 			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 			Criteria criteria = session.createCriteria(Solicitud.class);
@@ -70,11 +69,11 @@ public class SolicitudDaoHibernate extends HibernateDaoSupport implements Solici
 		Session session;
 		try {
 			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
-			solicitud = (Solicitud)session.get(Solicitud.class, id);
+			solicitud = (Solicitud) session.get(Solicitud.class, id);
 		} catch (HibernateException e) {
 			throw new ExceptionDao(e);
 		}
 		return solicitud;
-	}	
-	
+	}
+
 }

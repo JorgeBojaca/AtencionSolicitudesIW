@@ -18,9 +18,9 @@ import co.edu.udea.iw.exception.IWServiceException;
 import co.edu.udea.iw.validation.Validaciones;
 
 /**
- * Clase encargada de la logica de negocio para la clase Pregunta. 
- * Clase transaccional con la BD.
- * Será util para realizar la encuesta de satisfaccion de los clientes del sistema.
+ * Clase encargada de la logica de negocio para la Encuestas de satisfaccion.
+ * Clase transaccional con la BD. Será util para realizar la encuesta de
+ * satisfaccion a los clientes del sistema.
  * 
  * @author Diana Ciro
  * @author Milena Cardenas
@@ -49,7 +49,7 @@ public class EncuestaService {
 		}
 		if(solicitudDAO.obtenerSolicitud(idSolicitud)==null){
 			throw new IWServiceException(
-					" No existe una Solicitud con la identificaci�n ingresada");
+					" No existe una Solicitud con la identificaci�n ingresada");
 		}
 		return respuestaDAO.obtenerRespuestas(idSolicitud);
 	}

@@ -217,7 +217,7 @@ public class SolicitudService {
 		
 		if(!usuarioDAO.obtenerUsuario(user).getRol().getNombre().equals("gerente")){
 			throw new IWServiceException(
-					"No tiene permisos para realizar esta acción");
+					"No tiene permisos para realizar esta acciï¿½n");
 		}
 		return solicitudDAO.obtenerSolicitud();
 	}
@@ -241,7 +241,7 @@ public class SolicitudService {
 	
 	/**
      * Hacer seguimiento de fecha limite para responder una solicitud
-     * TERMINAR!!
+     * 
      * @return lista de las solicitudes atrasadas.
      */
     

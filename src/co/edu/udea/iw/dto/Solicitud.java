@@ -3,15 +3,14 @@ package co.edu.udea.iw.dto;
 import java.util.Date;
 
 /**
- * DTO
- * Clase para manejar la Tabla Solicitud.
+ * DTO Clase para manejar la Tabla Solicitud de la Base de Datos
+ * atencionSolicitudes.
  * 
  * @author Diana Ciro
  * @author Milena Cardenas
  * @author Jorge Bojaca
  * @version 1.0
  */
-
 public class Solicitud {
 	
 	private int id;//PK

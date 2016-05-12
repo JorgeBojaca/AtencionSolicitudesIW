@@ -11,10 +11,9 @@ import co.edu.udea.iw.dto.Pregunta;
 import co.edu.udea.iw.exception.ExceptionDao;
 
 /**
- * Implementación de la interfaz PreguntaDao, 
- * esta se basara en Hibernate,
- * en esta clase se hereda de HibernateDaoSupport 
- * para adquirir la funcionalidad de Hibernate.
+ * Implementación de la interfaz PreguntaDao, esta se basara en Hibernate. En
+ * esta clase se hereda de HibernateDaoSupport para adquirir la funcionalidad de
+ * Hibernate.
  * 
  * @author Diana Ciro
  * @author Milena Cardenas
