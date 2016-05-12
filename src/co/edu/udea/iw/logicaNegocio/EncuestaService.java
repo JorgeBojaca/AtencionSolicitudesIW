@@ -27,6 +27,9 @@ import co.edu.udea.iw.validation.Validaciones;
 @Transactional
 public class EncuestaService {
 
+	/**
+	 * Beans para manejar los DaoHibernate
+	 */
 	private PreguntaDao preguntaDAO;
 	private RespuestaDao respuestaDAO;
 	private SolicitudDao solicitudDAO;

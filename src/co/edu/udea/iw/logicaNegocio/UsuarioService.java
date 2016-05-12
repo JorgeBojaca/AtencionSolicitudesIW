@@ -21,30 +21,40 @@ import co.edu.udea.iw.validation.Validaciones;
  * @author Jorge Bojaca
  * @version 1.0
  */
-
-@Transactional        //Anotacion requerida para informarle a Spring que esta clase manejar� transacciones
+@Transactional // Anotacion requerida para informarle a Spring que esta clase
+				// manejar� transacciones
 public class UsuarioService {
 
-	private UsuarioDao usuarioDAO;
+	/**
+	 * Beans para manejar los DaoHibernate
+	 */
+	private UsuarioDao usuarioDAO; //comentar
 	private RolDao rolDAO;
-
 
 	/**
 	 * Metodo para guardar la informacion ingresada por el cliente.
 	 * 
 	 * @param user
+	 *            identificador del cliente
 	 * @param password
+	 *            contrasenia del cliente
 	 * @param nombres
+	 *            nombre del cliente
 	 * @param apellidos
+	 *            apellidos del cliente
 	 * @param email
+	 *            email del cliente
 	 * @param telefono
+	 *            telefono del cliente
 	 * @param direccion
+	 *            direccion del cliente
 	 * @throws ExceptionDao
+	 *             Manejar las excepciones del DAO.
 	 * @throws IWServiceException
+	 *             Manejar las excepciones de la lógica del negocio.
 	 */
-	public String guardarCliente(String user, String password, String nombres,
-			String apellidos, String email, String telefono, String direccion)
-			throws ExceptionDao, IWServiceException {
+	public String guardarCliente(String user, String password, String nombres, String apellidos, String email,
+			String telefono, String direccion) throws ExceptionDao, IWServiceException {
 
 		Usuario usuario = null;
 		Rol rol = null;
@@ -73,9 +83,9 @@ public class UsuarioService {
 			throw new IWServiceException(
 					"El campo email del cliente no puede ser nulo, ni una cadena de caracteres vacia");
 		}
-		if (!Validaciones.isEmail(email)) { //SI NO ES UN CORREO MANDAR LA EXCEPTION
-			throw new IWServiceException(
-					"El correo electronico del cliente debe ser valido");
+		if (!Validaciones.isEmail(email)) { // SI NO ES UN CORREO MANDAR LA
+											// EXCEPTION
+			throw new IWServiceException("El correo electronico del cliente debe ser valido");
 		}
 
 		if (Validaciones.isTextoVacio(telefono)) {
@@ -90,12 +100,12 @@ public class UsuarioService {
 
 		// El cliente no puede existir
 		if (usuarioDAO.obtenerUsuario(user) != null) {
-			throw new IWServiceException("Ya existe un cliente con usuario "
-					+ user + " en el sistema");
+			throw new IWServiceException("Ya existe un cliente con usuario " + user + " en el sistema");
 		}
 
 		usuario = new Usuario();
-		rol = rolDAO.obtenerRol(3); //Se obtiene el Rol con id=3 que identifica a un CLIENTE
+		rol = rolDAO.obtenerRol(3); // Se obtiene el Rol con id=3 que identifica
+									// a un CLIENTE
 
 		usuario.setUser(user);
 		usuario.setPassword(password);
@@ -107,25 +117,34 @@ public class UsuarioService {
 		usuario.setRol(rol);
 
 		usuarioDAO.guardar(usuario);
-		return "Se ha creado un "+rol.getNombre()+" exitosamente";
+		return "Se ha creado un " + rol.getNombre() + " exitosamente";
 
 	}
 
 	/**
+	 * Metodo para modificar los campos de un cliente
 	 * 
 	 * @param user
+	 *            identificador del cliente
 	 * @param password
+	 *            contrasenia del cliente
 	 * @param nombres
+	 *            nombres del cliente
 	 * @param apellidos
+	 *            apellidos del cliente
 	 * @param email
+	 *            correo electronico del cliente
 	 * @param telefono
+	 *            telefono del cliente
 	 * @param direccion
+	 *            direccion del cliente
 	 * @throws ExceptionDao
+	 *             Manejar las excepciones del DAO.
 	 * @throws IWServiceException
+	 *             Manejar las excepciones de la lógica del negocio.
 	 */
-	public String actualizarCliente(String user, String password, String nombres,
-			String apellidos, String email, String telefono, String direccion)
-			throws ExceptionDao, IWServiceException {
+	public String actualizarCliente(String user, String password, String nombres, String apellidos, String email,
+			String telefono, String direccion) throws ExceptionDao, IWServiceException {
 
 		Usuario usuario = null;
 		Rol rol = null;
@@ -151,8 +170,7 @@ public class UsuarioService {
 		}
 
 		if (Validaciones.isEmail(email)) {
-			throw new IWServiceException(
-					"El correo electronico del cliente debe ser valido");
+			throw new IWServiceException("El correo electronico del cliente debe ser valido");
 		}
 
 		if (Validaciones.isTextoVacio(telefono)) {
@@ -166,12 +184,12 @@ public class UsuarioService {
 		}
 		// No importa que el cliente exista
 		if (usuarioDAO.obtenerUsuario(user) == null) {
-			throw new IWServiceException("No existe el cliente con usuario: "
-					+ user + " en el sistema");
+			throw new IWServiceException("No existe el cliente con usuario: " + user + " en el sistema");
 		}
 
 		usuario = new Usuario();
-		rol = rolDAO.obtenerRol(3);//Obtener el rol con id=3 que representa a un CLIENTE
+		rol = rolDAO.obtenerRol(3);// Obtener el rol con id=3 que representa a
+									// un CLIENTE
 
 		usuario.setUser(user);
 		usuario.setPassword(password);
@@ -184,28 +202,31 @@ public class UsuarioService {
 		System.out.println(rol.getNombre());
 
 		usuarioDAO.actualizar(usuario);
-		
+
 		return "Se ha actualizado exitosamente";
 
 	}
 
 	/**
+	 * Metodo para verificar el usuario y contrasenia con la base de datos
 	 * 
 	 * @param user
+	 *            identificador del usuario
 	 * @param password
-	 * @return
+	 *            contrasenia del usuario
+	 * @return Usuario
 	 * @throws ExceptionDao
+	 *             Manejar las excepciones del DAO.
 	 * @throws IWServiceException
+	 *             Manejar las excepciones de la lógica del negocio.
 	 */
-	public Usuario autenticarUsuario(String user, String password)
-			throws ExceptionDao, IWServiceException {
+	public Usuario autenticarUsuario(String user, String password) throws ExceptionDao, IWServiceException {
 
 		Usuario usuario = null;
 		usuario = usuarioDAO.obtenerUsuario(user);
 
 		if (usuario == null) {
-			throw new IWServiceException("No existe el cliente con usuario: "
-					+ user + " en el sistema");
+			throw new IWServiceException("No existe el cliente con usuario: " + user + " en el sistema");
 		}
 
 		if (!usuario.getPassword().equals(password)) {
@@ -216,20 +237,26 @@ public class UsuarioService {
 	}
 
 	/**
+	 * Metodo para obtener el listado de usuarios
 	 * 
-	 * @return
+	 * @return Lista de usuarios
 	 * @throws ExceptionDao
+	 *             Manejar las excepciones del DAO.
 	 */
 	public List<Usuario> obtener() throws ExceptionDao {
 		return usuarioDAO.obtenerUsuarios();
 	}
 
 	/**
+	 * Metodo para obtener el usuario del identificador enviado como parametro
 	 * 
 	 * @param user
-	 * @return
+	 *            identificador del usuario
+	 * @return Usuario
 	 * @throws ExceptionDao
+	 *             Manejar las excepciones del DAO.
 	 * @throws IWServiceException
+	 *             Manejar las excepciones de la logica de negocio.
 	 */
 	public Usuario obtener(String user) throws ExceptionDao, IWServiceException {
 		if (user == null && "".equals(user)) {
@@ -255,6 +282,5 @@ public class UsuarioService {
 	public void setRolDAO(RolDao rolDAO) {
 		this.rolDAO = rolDAO;
 	}
-
 
 }

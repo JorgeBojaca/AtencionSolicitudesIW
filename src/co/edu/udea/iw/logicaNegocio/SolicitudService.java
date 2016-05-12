@@ -26,7 +26,10 @@ import co.edu.udea.iw.validation.Validaciones;
 @Transactional
 public class SolicitudService {
 
-	private SolicitudDao solicitudDAO;
+	/**
+	 * Beans para manejar los DaoHibernate
+	 */
+	private SolicitudDao solicitudDAO; 
 	private UsuarioDao usuarioDAO;
 	private TipoSolicitudDao tipoSolicitudDAO;
 
@@ -196,6 +199,7 @@ public class SolicitudService {
 		solicitud.setResponsable(usrResponsable);
 
 		solicitudDAO.actualizar(solicitud);
+		//enviar la encuesta al correo, mirar metodo en internet
 
 	}
 
