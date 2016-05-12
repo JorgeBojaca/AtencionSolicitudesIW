@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/05/2016 07:33:55 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.iw.dto.Sucursal" table="SUCURSAL">
+        <id name="id" type="int">
+            <column name="id" precision="11"/>
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="nombre" length="50" not-null="true"/>
+        </property>
+        <property name="direccion" type="java.lang.String">
+            <column name="direccion" length="100"/>
+        </property>
+        <property name="telefono" type="java.lang.String">
+            <column name="telefono" length="20"/>
+        </property>
+    </class>
+</hibernate-mapping>

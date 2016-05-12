@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/05/2016 07:20:17 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.iw.dto.Usuario" table="USUARIO">
+        <id name="user" type="java.lang.String">
+            <column name="user" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombres" type="java.lang.String">
+            <column name="nombres" length="50" not-null="true"/>
+        </property>
+        <property name="apellidos" type="java.lang.String">
+            <column name="apellidos" length="50" not-null="true" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password" length="30" not-null="true"/>
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="email" length="100" not-null="true"/>
+        </property>
+        <property name="telefono" type="java.lang.String">
+            <column name="telefono" length="20"/>
+        </property>
+        <property name="direccion" type="java.lang.String">
+            <column name="direccion" length="100"/>
+        </property>
+        <many-to-one name="rol" class="co.edu.udea.iw.dto.Rol" fetch="join">
+            <column name="rol" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

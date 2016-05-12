@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/05/2016 07:52:35 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.iw.dto.Solicitud" table="SOLICITUD">
+        <id name="id" type="int">
+            <column name="id" precision="11" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="tipoSolicitud" class="co.edu.udea.iw.dto.TipoSolicitud">
+        	<column name="tipoSolicitud" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="cliente" class="co.edu.udea.iw.dto.Usuario" fetch="join">
+            <column name="cliente" length="30" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="java.lang.String">
+            <column name="descripcion" length="500" not-null="true" />
+        </property>
+        <property name="complejidad" type="java.lang.String">
+            <column name="complejidad" length="20"/>
+        </property>
+        <many-to-one name="responsable" class="co.edu.udea.iw.dto.Usuario" fetch="join">
+            <column name="responsable" />
+        </many-to-one>
+        <property name="producto" type="java.lang.String">
+            <column name="producto" length="30"/>
+        </property>
+        <many-to-one name="sucursal" class="co.edu.udea.iw.dto.Sucursal" fetch="join">
+            <column name="sucursal" />
+        </many-to-one>
+        <property name="fechaSolicitud" type="java.util.Date">
+            <column name="fechaSolicitud" not-null="true"/>
+        </property>
+        <property name="respuestaSolicitud" type="java.lang.String" access="field">
+            <column name="respuestaSolicitud" length="500"/>
+        </property>
+        <property name="fechaRespuesta" type="java.util.Date">
+            <column name="fechaRespuesta" />
+        </property>
+    </class>
+</hibernate-mapping>
